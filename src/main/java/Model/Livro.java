@@ -1,8 +1,5 @@
 package Model;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Livro extends Genero {
     private Long id_livro;
     private String titulo_livro;

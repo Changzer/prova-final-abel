@@ -1,7 +1,6 @@
 package DAO;
 
 import Factory.ConnectionFactory;
-import Model.Biblioteca;
 import Model.Livro;
 
 import java.sql.*;

@@ -4,9 +4,7 @@ import Factory.ConnectionFactory;
 import Model.Biblioteca;
 import Model.Livro;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class InventarioDAO {
     private String tableName = "inventario";
@@ -15,7 +13,9 @@ public class InventarioDAO {
 
 
     public void createInventarioTable(){
-        String sql = "CREATE TABLE IF NOT EXISTS " + tableName + " (" +
+        String sql = "CREATE SEQUENCE IF NOT EXISTS inventario_id_seq;";
+
+        sql += "CREATE TABLE IF NOT EXISTS " + tableName + " (" +
                 "id_biblioteca BIGINT, " +
                 "id_livro BIGINT, " +
                 "titulo_livro TEXT, " +
@@ -30,22 +30,26 @@ public class InventarioDAO {
         try {
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.execute();
+            statement.close();
         } catch (SQLException e){
             throw new RuntimeException(e);
         }
     }
 
-    public void addInventario(Biblioteca biblioteca, Livro livro, String titulo_livro) throws SQLException {
-        if (biblioteca != null && livro != null){
+    public void addInventario(Biblioteca biblioteca, Livro livro) throws SQLException {
+        if(biblioteca != null && livro != null ){
             String sql = "INSERT INTO " + tableName +
-                    "(id_biblioteca, id_livro, titulo_livro) " +
-                    "VALUES (?,?,?)";
+                    "(id_biblioteca, id_livro)" +
+                    "VALUES (?, ?)";
 
             PreparedStatement statement = connection.prepareStatement(sql);
 
-            statement.setLong(1,biblioteca.getId_biblioteca());
-            statement.setLong(2,livro.getId_livro());
-            statement.setString(3, livro.getTitulo_livro());
+            statement.setLong(1, biblioteca.getId_biblioteca());
+            statement.setLong(2, livro.getId_livro());
+
+            statement.execute();
         }
     }
+
+
 }

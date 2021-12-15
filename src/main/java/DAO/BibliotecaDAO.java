@@ -89,4 +89,9 @@ public class BibliotecaDAO {
             throw new RuntimeException(e);
         } return biblioteca;
     }
+
+    private InventarioDAO inventarioDAO = new InventarioDAO();
+    public void addInventario(Biblioteca biblioteca, Livro livro) throws SQLException{
+        inventarioDAO.addInventario(biblioteca,livro);
+    }
 }
