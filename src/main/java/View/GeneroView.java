@@ -53,8 +53,8 @@ public class GeneroView {
     public void CadastrarGenero(){
         Scanner ler = new Scanner(System.in);
         Genero genero = new Genero();
-        System.out.println("cadastre uma categoria");
-        System.out.println("nome da categoria");
+        System.out.println("cadastre um genero");
+        System.out.println("nome do genero");
         genero.setNome_genero(ler.nextLine());
 
         controller.addGenero(genero);
