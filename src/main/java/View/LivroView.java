@@ -69,18 +69,18 @@ public class LivroView {
 
     public void EditarLivros(){
         if (controller.getModels().size() == 0) {
-            System.out.println("Não tem filme pra editar");
+            System.out.println("Não tem livro pra editar");
             return;
         }
         Scanner ler = new Scanner(System.in);
 
-        System.out.println("Escolha um ID de filme: ");
+        System.out.println("Escolha um ID de livro: ");
         Long id = ler.nextLong();
         ler.nextLine();
 
         Livro escolha = controller.getById(id);
         if (escolha == null) {
-            System.out.println("Filme não encontrado");
+            System.out.println("Livro não encontrado");
             return;
         }
         edite(escolha);
@@ -89,7 +89,7 @@ public class LivroView {
     public void edite(Livro livro) {
         Scanner ler = new Scanner(System.in);
         while (true){
-            System.out.println("Edite um filme:");
+            System.out.println("Edite um livro:");
             System.out.printf("%s \n", livro.getTitulo_livro());
 
             System.out.println("Escolha um novo nome: ");

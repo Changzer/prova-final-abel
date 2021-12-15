@@ -23,4 +23,8 @@ public class GeneroController {
     public List<Genero>  getModels() {
         return dao.listGenero();
     }
+
+    public void editeGenero(Genero genero) {dao.editeGenero(genero);}
+
+    public Genero getById(Long id) { return dao.getById(id);}
 }

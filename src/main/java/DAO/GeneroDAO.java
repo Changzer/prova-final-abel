@@ -74,4 +74,34 @@ public class GeneroDAO {
         }
     }
 
+    public void editeGenero(Genero genero){
+        String sql = "UPDATE " + tableName + " SET nome_genero = ?" +
+                " WHERE id_genero = ?";
+        try {
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setString(1, genero.getNome_genero());
+            statement.setLong(2, genero.getId_genero());
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public Genero getById(Long id){
+        String sql = "SELECT * FROM genero WHERE id_genero = ?";
+        Genero genero = null;
+        try {
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setLong(1,id);
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()){
+                genero = new Genero();
+                genero.setId_genero(resultSet.getLong("id_genero"));
+                genero.setNome_genero(resultSet.getString("nome_genero"));
+            }
+        }   catch (SQLException e) {
+            throw new RuntimeException(e);
+        } return genero;
+    }
+
 }

@@ -36,6 +36,7 @@ public class GeneroView {
                     break;
 
                 case 3:
+                    editeGenero();
                     break;
             }
         }
@@ -55,6 +56,36 @@ public class GeneroView {
     public void ListarGenero(){
         for (Genero genero : controller.getModels()) {
             System.out.printf("%d - %s\n", genero.getId_genero(), genero.getNome_genero());
+        }
+    }
+
+    public void editeGenero(){
+        if (controller.getModels().size() == 0) {
+            System.out.println("Nao tem genero para editar");
+            return;
+        }
+        Scanner ler = new Scanner(System.in);
+
+        System.out.println("Escolha um ID de genero");
+        Long id = ler.nextLong();
+        ler.nextLine();
+
+        Genero escolha = controller.getById(id);
+        if (escolha == null){
+            System.out.println("Genero não encontrado!");
+            return;
+        }
+        edite(escolha);
+    }
+
+    private void edite(Genero genero) {
+        Scanner ler = new Scanner(System.in);
+        while (true) {
+            System.out.printf("%s \n", genero.getNome_genero());
+            System.out.println("escolha um novo nome: ");
+            genero.setNome_genero(ler.nextLine());
+            controller.editeGenero(genero);
+            break;
         }
     }
 

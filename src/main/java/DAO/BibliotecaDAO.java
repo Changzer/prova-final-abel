@@ -2,8 +2,11 @@ package DAO;
 
 import Factory.ConnectionFactory;
 import Model.Biblioteca;
+import Model.Livro;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class BibliotecaDAO {
 
@@ -50,4 +53,23 @@ public class BibliotecaDAO {
         } return null;
     }
 
+    public List<Biblioteca> listBiblioteca() {
+        String sql = "SELECT * FROM " + tableName;
+        try {
+            PreparedStatement statement = connection.prepareStatement(sql);
+            ResultSet resultSet = statement.executeQuery();
+
+            List<Biblioteca> bibliotecaList = new ArrayList<>();
+            while (resultSet.next()) {
+                Biblioteca novoBiblioteca = new Biblioteca();
+                novoBiblioteca.setId_biblioteca(resultSet.getLong("id_biblioteca"));
+                novoBiblioteca.setNome_biblioteca(resultSet.getString("nome_biblioteca"));
+
+                bibliotecaList.add(novoBiblioteca);
+            }
+            return bibliotecaList;
+        }   catch (SQLException e){
+            throw new RuntimeException(e);
+        }
+    }
 }

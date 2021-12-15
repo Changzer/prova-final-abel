@@ -65,7 +65,9 @@ public class BibliotecaView {
     }
 
     public void ListarBiblioteca(){
-
+        for (Biblioteca biblioteca : controller.getModels()) {
+            System.out.printf("%d - %s\n", biblioteca.getId_biblioteca(), biblioteca.getNome_biblioteca());
+        }
     }
 
     public void Livros(){
