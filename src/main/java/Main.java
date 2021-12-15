@@ -5,6 +5,8 @@ import DAO.GeneroDAO;
 import DAO.InventarioDAO;
 import DAO.LivroDAO;
 
+import java.sql.SQLException;
+
 public class Main {
     public static void initDatabase(){
 
@@ -19,7 +21,7 @@ public class Main {
         initDatabase();
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
         startApplication();
 
 

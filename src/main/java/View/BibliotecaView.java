@@ -18,7 +18,7 @@ public class BibliotecaView {
 
 
 
-    public void menu(){
+    public void menu() throws SQLException {
         Scanner ler = new Scanner(System.in);
 
         while(true) {
@@ -88,7 +88,7 @@ public class BibliotecaView {
         controller.start();
     }
 
-    public void inventario() {
+    public void inventario() throws SQLException {
 
         System.out.println("adicionar livros ao inventario");
 
@@ -110,10 +110,11 @@ public class BibliotecaView {
         }
 
         System.out.println("Selecione um livro por ID:");
+        Long id2 = ler.nextLong();
         ler.nextLine();
 
         LivroController controller2 = new LivroController();
-        Livro escolha2 = controller2.getById(id);
+        Livro escolha2 = controller2.getById(id2);
         if (escolha == null) {
             System.out.println("livro nao encontrado!");
             return;
@@ -121,7 +122,7 @@ public class BibliotecaView {
 
         adicione(escolha,escolha2);
 
-
+      controller.addInventario(escolha,escolha2, escolha2.getTitulo_livro());
 
 
     }

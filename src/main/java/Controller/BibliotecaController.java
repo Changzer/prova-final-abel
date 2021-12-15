@@ -20,7 +20,7 @@ public class BibliotecaController {
     }
 
 
-    public void start(){
+    public void start() throws SQLException {
         view.menu();
     }
 
@@ -34,8 +34,8 @@ public class BibliotecaController {
         return dao.getById(id);
     }
 
-    public void addInventario(Biblioteca biblioteca, Livro livro) throws SQLException {
-        dao.addInventario(biblioteca, livro);
+    public void addInventario(Biblioteca biblioteca, Livro livro, String titulo_livro) throws SQLException {
+        dao.addInventario(biblioteca, livro, titulo_livro );
     }
 
 }

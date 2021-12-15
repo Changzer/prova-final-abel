@@ -91,7 +91,7 @@ public class BibliotecaDAO {
     }
 
     private InventarioDAO inventarioDAO = new InventarioDAO();
-    public void addInventario(Biblioteca biblioteca, Livro livro) throws SQLException{
-        inventarioDAO.addInventario(biblioteca,livro);
+    public void addInventario(Biblioteca biblioteca, Livro livro, String titulo_livro) throws SQLException{
+        inventarioDAO.addInventario(biblioteca,livro, titulo_livro);
     }
 }
