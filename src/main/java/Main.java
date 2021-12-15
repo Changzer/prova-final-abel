@@ -2,6 +2,7 @@ import Controller.BibliotecaController;
 import Controller.LivroController;
 import DAO.BibliotecaDAO;
 import DAO.GeneroDAO;
+import DAO.InventarioDAO;
 import DAO.LivroDAO;
 
 public class Main {
@@ -10,6 +11,7 @@ public class Main {
         new LivroDAO().createLivroTable();
         new GeneroDAO().createGeneroTable();
         new BibliotecaDAO().createBibliotecaTable();
+        new InventarioDAO().createInventarioTable();
 
     }
 

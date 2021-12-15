@@ -72,4 +72,21 @@ public class BibliotecaDAO {
             throw new RuntimeException(e);
         }
     }
+
+    public Biblioteca getById(Long id){
+        String sql = "SELECT * FROM biblioteca WHERE id_biblioteca = ?";
+        Biblioteca biblioteca = null;
+        try {
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setLong(1,id);
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()){
+                biblioteca = new Biblioteca();
+                biblioteca.setId_biblioteca(resultSet.getLong("id_biblioteca"));
+                biblioteca.setNome_biblioteca(resultSet.getString("nome_biblioteca"));
+            }
+        }   catch (SQLException e) {
+            throw new RuntimeException(e);
+        } return biblioteca;
+    }
 }

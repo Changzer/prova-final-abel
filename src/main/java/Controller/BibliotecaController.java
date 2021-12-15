@@ -2,6 +2,7 @@ package Controller;
 
 import DAO.BibliotecaDAO;
 import Model.Biblioteca;
+import Model.Livro;
 import View.BibliotecaView;
 
 import java.util.List;
@@ -24,5 +25,9 @@ public class BibliotecaController {
     }
 
     public List<Biblioteca> getModels() {return dao.listBiblioteca();}
+
+    public Biblioteca getById(Long id){
+        return dao.getById(id);
+    }
 
 }

@@ -1,6 +1,7 @@
 package DAO;
 
 import Factory.ConnectionFactory;
+import Model.Biblioteca;
 import Model.Livro;
 
 import java.sql.*;
@@ -11,6 +12,7 @@ public class LivroDAO {
 
     private String tableName = "livro";
     private Connection connection = new ConnectionFactory().getConnection();
+    private InventarioDAO inventarioDAO = new InventarioDAO();
 
 
     public void createLivroTable(){
@@ -19,7 +21,8 @@ public class LivroDAO {
         sql += "CREATE TABLE IF NOT EXISTS " + tableName + "(" +
                 "id_livro BIGINT PRIMARY KEY DEFAULT nextval('livro_id_seq')," +
                 "titulo_livro TEXT NOT NULL," +
-                "nome_genero TEXT)";
+                "nome_genero TEXT " +
+                ")";
 
         try {
             PreparedStatement statement = connection.prepareStatement(sql);
@@ -106,5 +109,7 @@ public class LivroDAO {
         } return livro;
     }
 
-
+    public void addInventario(Biblioteca biblioteca, Livro livro) throws SQLException, NullPointerException {
+        inventarioDAO.addInventario(biblioteca, livro, livro.getTitulo_livro());
+    }
 }

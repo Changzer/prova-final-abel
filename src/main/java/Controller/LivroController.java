@@ -2,10 +2,12 @@ package Controller;
 
 import DAO.GeneroDAO;
 import DAO.LivroDAO;
+import Model.Biblioteca;
 import Model.Genero;
 import Model.Livro;
 import View.LivroView;
 
+import java.sql.SQLException;
 import java.util.List;
 
 public class LivroController {
@@ -35,6 +37,10 @@ public class LivroController {
 
   public void start(){
         view.Menu();
+    }
+
+    public void addInventario(Biblioteca biblioteca, Livro livro) throws SQLException {
+        dao.addInventario(biblioteca, livro);
     }
 
 

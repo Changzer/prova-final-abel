@@ -1,9 +1,12 @@
 package View;
 
+import Controller.BibliotecaController;
 import Controller.LivroController;
+import Model.Biblioteca;
 import Model.Genero;
 import Model.Livro;
 
+import java.sql.SQLException;
 import java.util.Scanner;
 
 public class LivroView {
@@ -57,6 +60,7 @@ public class LivroView {
         System.out.println("Qual o Genero do Livro?");
         livro.setNome_genero(ler.nextLine());
 
+
         controller.addLivros(livro);
 
     }
@@ -87,6 +91,9 @@ public class LivroView {
     }
 
     public void edite(Livro livro) {
+        BibliotecaController bibliotecaController = new BibliotecaController();
+
+
         Scanner ler = new Scanner(System.in);
         while (true){
             System.out.println("Edite um livro:");
@@ -98,6 +105,21 @@ public class LivroView {
             System.out.println("Escolha um novo genero: ");
             livro.setNome_genero(ler.nextLine());
 
+            System.out.println("Inventario - Digite o ID da biblioteca!");
+            Long id = (ler.nextLong());
+            Biblioteca biblioteca = bibliotecaController.getById(id);
+
+            if (biblioteca == null) {
+                System.out.println("id invalido!");
+                continue;
+            } else {
+
+                try {
+                    controller.addInventario(bibliotecaController.getById(id), livro);
+                } catch (SQLException e) {
+                    System.out.println("deu erro!");
+                }
+            }
             controller.editeLivro(livro);
             break;
         }
