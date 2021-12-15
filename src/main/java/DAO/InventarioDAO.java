@@ -5,6 +5,8 @@ import Model.Biblioteca;
 import Model.Livro;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class InventarioDAO {
     private String tableName = "inventario";
@@ -48,5 +50,25 @@ public class InventarioDAO {
         }
     }
 
+    public List<Livro> bibliotecaInventario(Long id) {
+        String sql = "SELECT id_livro, titulo_livro FROM inventario WHERE id_biblioteca = ?";
 
+        try {
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setLong(1,id);
+            ResultSet resultSet = statement.executeQuery();
+
+            List<Livro> livroList = new ArrayList<>();
+            while (resultSet.next()){
+                Livro novoLivro = new Livro();
+                novoLivro.setId_livro(resultSet.getLong("id_livro"));
+                novoLivro.setTitulo_livro(resultSet.getString("titulo_livro"));
+
+                livroList.add(novoLivro);
+            }
+            return livroList;
+        }   catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

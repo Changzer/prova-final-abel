@@ -2,7 +2,6 @@ package Controller;
 
 import DAO.BibliotecaDAO;
 import DAO.InventarioDAO;
-import DAO.LivroDAO;
 import Model.Biblioteca;
 import Model.Livro;
 import View.BibliotecaView;
@@ -37,5 +36,10 @@ public class BibliotecaController {
     public void addInventario(Biblioteca biblioteca, Livro livro, String titulo_livro) throws SQLException {
         dao.addInventario(biblioteca, livro, titulo_livro );
     }
+
+    public List<Livro> listaInventario(Long id){
+      return dao.bibliotecaInventario(id);
+    }
+
 
 }

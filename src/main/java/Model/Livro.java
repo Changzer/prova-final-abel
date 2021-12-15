@@ -41,10 +41,6 @@ public class Livro extends Genero {
 
     @Override
     public String toString() {
-        return "Livro{" +
-                "id_livro=" + id_livro +
-                ", titulo_livro='" + titulo_livro + '\'' +
-                ", nome_genero='" + nome_genero + '\'' +
-                '}';
+        return titulo_livro;
     }
 }

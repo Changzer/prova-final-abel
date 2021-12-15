@@ -7,6 +7,7 @@ import Model.Biblioteca;
 import Model.Livro;
 
 import java.sql.SQLException;
+import java.util.List;
 import java.util.Scanner;
 
 public class BibliotecaView {
@@ -27,7 +28,8 @@ public class BibliotecaView {
             System.out.println("2 - Listar Biblioteca");
             System.out.println("3 - Livros");
             System.out.println("4 - Generos");
-            System.out.println("5 - Inventario");
+            System.out.println("5 - ADD Inventario");
+            System.out.println("6 - List Inventario");
 
             int escolha = ler.nextInt();
             ler.nextLine();
@@ -52,13 +54,28 @@ public class BibliotecaView {
                     break;
 
                 case 5:
-
-                        inventario();
-
+                    inventario();
                     break;
+
+                case 6:
+                    listInventario();
 
             }
         }
+    }
+
+    private void listInventario() {
+        Scanner ler = new Scanner(System.in);
+        System.out.println("digite o ID da biblioteca");
+        Long id = ler.nextLong();
+        ler.nextLine();
+
+        System.out.println("Livros na Biblioteca: " + id);
+        List<Livro> escolha = controller.listaInventario(id);
+        System.out.println(escolha.toString());
+        return;
+
+
     }
 
     public void CadastrarBiblioteca(){

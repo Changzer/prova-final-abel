@@ -94,4 +94,8 @@ public class BibliotecaDAO {
     public void addInventario(Biblioteca biblioteca, Livro livro, String titulo_livro) throws SQLException{
         inventarioDAO.addInventario(biblioteca,livro, titulo_livro);
     }
+
+    public List<Livro> bibliotecaInventario(Long id) {
+     return inventarioDAO.bibliotecaInventario(id);
+    }
 }
