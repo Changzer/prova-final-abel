@@ -16,6 +16,10 @@ public class LivroView {
         this.controller = controller;
     }
 
+    public LivroView() {
+
+    }
+
     public void Menu(){
         Scanner ler = new Scanner(System.in);
 
@@ -24,6 +28,7 @@ public class LivroView {
             System.out.println("1 - Cadastrar");
             System.out.println("2 - Listar");
             System.out.println("3 - Editar");
+            System.out.println("4 - Busca Livro por ID");
 
 
             int escolha = ler.nextInt();
@@ -42,6 +47,10 @@ public class LivroView {
 
                 case 3:
                     EditarLivros();
+                    break;
+
+                case 4:
+                    livroById();
                     break;
 
 
@@ -91,7 +100,7 @@ public class LivroView {
     }
 
     public void edite(Livro livro) {
-        BibliotecaController bibliotecaController = new BibliotecaController();
+
 
 
         Scanner ler = new Scanner(System.in);
@@ -105,24 +114,20 @@ public class LivroView {
             System.out.println("Escolha um novo genero: ");
             livro.setNome_genero(ler.nextLine());
 
-            System.out.println("Inventario - Digite o ID da biblioteca!");
-            Long id = (ler.nextLong());
-            Biblioteca biblioteca = bibliotecaController.getById(id);
-
-            if (biblioteca == null) {
-                System.out.println("id invalido!");
-                continue;
-            } else {
-
-                try {
-                    controller.addInventario(bibliotecaController.getById(id), livro);
-                } catch (SQLException e) {
-                    System.out.println("deu erro!");
-                }
-            }
             controller.editeLivro(livro);
             break;
         }
+    }
+
+
+    public void livroById(){
+        Scanner ler = new Scanner(System.in);
+        System.out.println("digite o ID do livro que esta  procurando");
+        Long id = ler.nextLong();
+        ler.nextLine();
+        Livro escolha = controller.getById(id);
+        System.out.println("Titulo: " + escolha.getTitulo_livro());
+        return;
     }
 
 

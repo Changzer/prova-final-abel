@@ -39,9 +39,8 @@ public class LivroController {
         view.Menu();
     }
 
-    public void addInventario(Biblioteca biblioteca, Livro livro) throws SQLException {
-        dao.addInventario(biblioteca, livro);
-    }
+
+
 
 
 }

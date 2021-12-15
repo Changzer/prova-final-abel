@@ -41,4 +41,13 @@ public class Livro {
     public void setNome_genero(String nome_genero) {
         this.nome_genero = nome_genero;
     }
+
+    @Override
+    public String toString() {
+        return "Livro{" +
+                "id_livro=" + id_livro +
+                ", titulo_livro='" + titulo_livro + '\'' +
+                ", nome_genero='" + nome_genero + '\'' +
+                '}';
+    }
 }

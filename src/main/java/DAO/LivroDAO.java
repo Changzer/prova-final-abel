@@ -109,7 +109,5 @@ public class LivroDAO {
         } return livro;
     }
 
-    public void addInventario(Biblioteca biblioteca, Livro livro) throws SQLException, NullPointerException {
-        inventarioDAO.addInventario(biblioteca, livro, livro.getTitulo_livro());
-    }
+
 }
