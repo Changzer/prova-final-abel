@@ -69,6 +69,7 @@ public class LivroDAO {
                 Livro novoLivro = new Livro();
                 novoLivro.setId_livro(resultSet.getLong("id_livro"));
                 novoLivro.setTitulo_livro(resultSet.getString("titulo_livro"));
+                novoLivro.setNome_genero(resultSet.getString("nome_genero"));
 
                 livroList.add(novoLivro);
             }
@@ -103,6 +104,7 @@ public class LivroDAO {
                 livro = new Livro();
                 livro.setId_livro(resultSet.getLong("id_livro"));
                 livro.setTitulo_livro(resultSet.getString("titulo_livro"));
+                livro.setNome_genero(resultSet.getString("nome_genero"));
             }
         }   catch (SQLException e) {
             throw new RuntimeException(e);

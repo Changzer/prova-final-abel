@@ -76,7 +76,7 @@ public class LivroView {
 
     public void ListarLivros(){
         for (Livro livro : controller.getModels()) {
-            System.out.printf("%d - %s\n", livro.getId_livro(), livro.getTitulo_livro());
+            System.out.printf("%d - %s - %s\n", livro.getId_livro(), livro.getTitulo_livro(), livro.getNome_genero());
         }
     }
 
@@ -100,8 +100,6 @@ public class LivroView {
     }
 
     public void edite(Livro livro) {
-
-
 
         Scanner ler = new Scanner(System.in);
         while (true){
@@ -127,6 +125,7 @@ public class LivroView {
         ler.nextLine();
         Livro escolha = controller.getById(id);
         System.out.println("Titulo: " + escolha.getTitulo_livro());
+        System.out.println("Genero: " + escolha.getNome_genero());
         return;
     }
 

@@ -2,7 +2,9 @@ package View;
 
 import Controller.GeneroController;
 import Model.Genero;
+import Model.Livro;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class GeneroView {
@@ -21,6 +23,7 @@ public class GeneroView {
             System.out.println("1 - Cadastrar");
             System.out.println("2 - Listar");
             System.out.println("3 - Editar");
+            System.out.println("4 - Buscar livros por genero");
 
             int escolha = ler.nextInt();
             ler.nextLine();
@@ -37,6 +40,10 @@ public class GeneroView {
 
                 case 3:
                     editeGenero();
+                    break;
+
+                case 4:
+                    buscarLivros();
                     break;
             }
         }
@@ -87,6 +94,29 @@ public class GeneroView {
             controller.editeGenero(genero);
             break;
         }
+    }
+
+    private void buscarLivros(){
+        Scanner ler = new Scanner(System.in);
+        System.out.println("digite o ID do genero que esta  procurando");
+        Long id = ler.nextLong();
+        ler.nextLine();
+
+       List<Genero> escolha = controller.buscaLivro(id);
+
+
+        System.out.println("ID | Titulo");
+        for(Genero genero : controller.buscaLivro(id)){
+            System.out.printf("%d  | %s \n",genero.getId_genero(), genero.getNome_genero());
+        }
+
+        if (escolha == null) {
+            System.out.println("nenhum livro cadastrado neste genero");
+            return;
+        }
+
+
+
     }
 
 }

@@ -3,7 +3,7 @@ package Model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Livro {
+public class Livro extends Genero {
     private Long id_livro;
     private String titulo_livro;
     private String nome_genero;

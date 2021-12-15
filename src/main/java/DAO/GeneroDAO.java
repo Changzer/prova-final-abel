@@ -104,4 +104,35 @@ public class GeneroDAO {
         } return genero;
     }
 
+    public List<Genero> buscaLivro(Long id){
+        String sql = "SELECT id_livro, titulo_livro FROM livro "+
+                "INNER JOIN genero " +
+                "ON livro.nome_genero = genero.nome_genero " +
+                "WHERE id_genero = ? ";
+
+
+        try {
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setLong(1, id);
+            ResultSet resultSet = statement.executeQuery();
+
+            List<Genero> genero = new ArrayList<>();
+
+            while (resultSet.next()){
+
+                Genero generoNovo = new Genero();
+
+                generoNovo.setId_genero(resultSet.getLong("id_livro"));
+                generoNovo.setNome_genero(resultSet.getString("titulo_livro"));
+
+                genero.add(generoNovo);
+            }
+                return genero;
+        } catch (SQLException e){
+            throw new RuntimeException(e);
+        }
+    }
+
+
+
 }
