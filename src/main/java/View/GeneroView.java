@@ -23,7 +23,7 @@ public class GeneroView {
             System.out.println("1 - Cadastrar");
             System.out.println("2 - Listar");
             System.out.println("3 - Editar");
-            System.out.println("4 - Buscar livros por genero");
+            System.out.println("4 - Listar livros por genero");
 
             int escolha = ler.nextInt();
             ler.nextLine();
@@ -104,7 +104,7 @@ public class GeneroView {
 
        List<Genero> escolha = controller.buscaLivro(id);
 
-
+        System.out.println("Livros cadastrados no genero: " + id);
         System.out.println("ID | Titulo");
         for(Genero genero : controller.buscaLivro(id)){
             System.out.printf("%d  | %s \n",genero.getId_genero(), genero.getNome_genero());

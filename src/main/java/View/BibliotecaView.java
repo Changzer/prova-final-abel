@@ -7,6 +7,7 @@ import Model.Biblioteca;
 import Model.Livro;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -64,19 +65,28 @@ public class BibliotecaView {
         }
     }
 
-    private void listInventario() {
+    public void listInventario() {
         Scanner ler = new Scanner(System.in);
         System.out.println("digite o ID da biblioteca");
         Long id = ler.nextLong();
         ler.nextLine();
 
-        System.out.println("Livros na Biblioteca: " + id);
+
         List<Livro> escolha = controller.listaInventario(id);
-        System.out.println(escolha.toString());
+
+        System.out.println("Livros na biblioteca: "+ id);
+        for (Livro livro : escolha) {
+            System.out.println(livro.getId_livro()+ " - " + livro.getTitulo_livro());
+        }
+
+
+
         return;
 
-
     }
+
+
+
 
     public void CadastrarBiblioteca(){
 
